@@ -47,4 +47,5 @@ X_test_emb = np.asarray(X_test_emb)
 print('X_test_emb shape: ', X_test_emb.shape)
 
 #save
-np.savez_compressed('data/embeddings_Xtr_ytr_Xt_yt.npz')
+np.savez_compressed('data/embeddings_Xtr_ytr_Xt_yt.npz', X_train_emb, y_train, X_test_emb, y_test)
+
