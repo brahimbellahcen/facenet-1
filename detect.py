@@ -2,11 +2,10 @@ from os import listdir
 from os.path import isdir
 from PIL import Image
 import numpy as np
-import matplotlib.pyplot as plt
 from mtcnn.mtcnn import MTCNN
 
 
-#extract a single face
+#detect a single face
 #return a numpy array 2X2, pixels of face
 def extract_face(filename, required_size=(160, 160)):
     image = Image.open(filename)
@@ -32,7 +31,7 @@ def extract_face(filename, required_size=(160, 160)):
 
 
 
-# load and extract faces for all images in a directory
+# load and detect faces for all images in a directory
 def load_faces(dir):
     faces = list()
     for filename in listdir(dir):
@@ -45,7 +44,7 @@ def load_faces(dir):
 
 # load a dataset that contains one subdir for each class
 # each subdir contains images of one person
-#
+# return detected face and label in np array
 def load_dataset(dir):
     X, y = list(), list()
     for subdir in listdir(dir):
@@ -64,14 +63,14 @@ def load_dataset(dir):
     return np.asarray(X), np.asarray(y)
 
 
-# load train dataset
-X_train, y_train = load_dataset('data/train/')
-print(X_train.shape, y_train.shape)
+# # load train dataset
+# X_train, y_train = load_dataset('data/train/')
+# print(X_train.shape, y_train.shape)
 
-#load test dataset
-X_test, y_test = load_dataset('data/val/')
-print(X_test.shape, y_test.shape)
+# #load test dataset
+# X_test, y_test = load_dataset('data/val/')
+# print(X_test.shape, y_test.shape)
 
-#save to compressed file
-np.savez_compressed('data/processed_data_Xtrain_ytrain_Xtest_ytest.npz', \
-    X_train, y_train, X_test, y_test)
+# #save to compressed file
+# np.savez_compressed('data/processed_data_Xtrain_ytrain_Xtest_ytest.npz', \
+#     X_train, y_train, X_test, y_test)
