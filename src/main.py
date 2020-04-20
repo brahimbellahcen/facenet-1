@@ -10,12 +10,13 @@ from face_classification import train_SVM
 #extract all face, label from dataset and save data as npz
 def extract_faces(train_dir, test_dir, save_dir):
     X_train, y_train = extract_faces_from_dataset(train_dir)
-    print('X_train: %s, y_train: %s' % (str(X_train), str(y_train)))
+    print('X_train: %s, y_train: %s' % (str(X_train.shape), str(y_train.shape)))
 
     X_test, y_test = extract_faces_from_dataset(test_dir)
-    print('X_test: %s, y_test: %s' % (str(X_test), str(y_test)))
+    print('X_test: %s, y_test: %s' % (str(X_test.shape), str(y_test.shape)))
 
-    np.savez_compressed(save_dir)
+    np.savez_compressed(save_dir, X_train, y_train, X_test, y_test)
+    print('saved extracted faces to ', save_dir)
 
 
 # cover faces to embebings and save as npz
@@ -47,6 +48,7 @@ def cover_to_embeddings(file, model, save_dir):
 
     #save
     np.savez_compressed(save_dir, X_train_emb, y_train, X_test_emb, y_test)
+    print('saved embeddings to ', save_dir)
 
 
 def mainx():
@@ -59,7 +61,7 @@ def mainx():
         save_dir=dataset + 'embeddings_Xtr_ytr_Xt_yt.npz')
     
 
-    train_SVM(dataset + 'embeddings_Xtr_ytr_Xt_yt.npz', root + '/model/SVM_FR.joblib')
+    train_SVM(dataset + 'embeddings_Xtr_ytr_Xt_yt.npz', root + '/model/SVM_FR_5celeb.joblib')
     print('Done!')
 
 #run
