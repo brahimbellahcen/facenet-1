@@ -76,5 +76,6 @@ def mainx():
     train_SVM(
         data_dir + 'embeddings_Xtr_ytr_Xt_yt.npz',
         CONSTANTS.root + '/model/SVM_FR_VNCeleb.joblib')
+        
 
 # mainx()
