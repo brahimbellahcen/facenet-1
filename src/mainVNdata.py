@@ -38,7 +38,7 @@ def load_face(data_dir, save_dir, train_size):
         if tmp > 50:
             break
         
-    #split traint, test
+    #split train, test
     for i in range(len(X)):
         person = X[i]
         number_of_faces = len(person)
