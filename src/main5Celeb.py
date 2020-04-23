@@ -19,7 +19,7 @@ def extract_faces(train_dir, test_dir, save_dir):
     print('saved extracted faces to ', save_dir)
 
 
-# convert faces to embebings and save as npz
+# convert faces to embeddings and save as npz
 # file: detected......npz file
 def convert_to_embeddings(file, model, save_dir):
     #load dataset
