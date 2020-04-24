@@ -1,2 +1,2 @@
-root = 'C:/Users/T470/OneDrive - Hanoi University of Science and Technology/Documents/ai/facenet'
-VNcelebdataset = 'D:/data/VN-celeb/VN-celeb'
+root = '/home/face_id/ducnv/FR/facenet'
+VNcelebdataset = '/home/face_id/dataset/VN-celeb'
