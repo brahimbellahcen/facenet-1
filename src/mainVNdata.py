@@ -16,7 +16,7 @@ from face_classification import train_SVM
 def load_faces_from_dataset(data_dir, save_dir):
     print('load faces from dataset')
     X, y = list(), list()
-    tmp = 0
+    # tmp = 0
     for subdir in listdir(data_dir):
         faces = list() #save faces from subdir
         path = data_dir + subdir + '/'
@@ -36,9 +36,9 @@ def load_faces_from_dataset(data_dir, save_dir):
         X.append(faces)  #list_of_persons( list (nparray))
         y.append(subdir)
 
-        tmp += 1
-        if tmp > 10:
-            break
+        # tmp += 1
+        # if tmp > 4:
+        #     break
 
     X = np.asarray(X)
     y = np.asarray(y)
