@@ -109,12 +109,12 @@ def main():
 
     # convert_emb(data_dir + 'detected_X_y.npz', data_dir +'embeddings_X_y.npz', facenet)
 
-    split_data(data_dir +'embeddings_X_y.npz', 15, data_dir + 'embeddings_Xtr_ytr_Xt_yt_15.npz')
+    split_data(data_dir +'embeddings_X_y.npz', 20, data_dir + 'embeddings_Xtr_ytr_Xt_yt_20.npz')
     
 
     train_SVM(
-        data_dir + 'embeddings_Xtr_ytr_Xt_yt_15.npz',
-        CONSTANTS.root + '/model/SVM_FR_VNCeleb_train3_15.joblib')
+        data_dir + 'embeddings_Xtr_ytr_Xt_yt_20.npz',
+        CONSTANTS.root + '/model/SVM_FR_VNCeleb_train4_20.joblib')
         
 
 main()
