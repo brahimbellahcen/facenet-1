@@ -103,20 +103,18 @@ def split_data(npz_file, train_size, save_dir):
 def main():
     data_dir = CONSTANTS.root + '/data/VNCeleb-dataset/'
 
-    load_faces_from_dataset(
-        CONSTANTS.VNcelebdataset + '/',
-        data_dir + 'detected_X_y.npz')
+    # load_faces_from_dataset(CONSTANTS.VNcelebdataset + '/', data_dir + 'detected_X_y.npz')
     
-    facenet = load_model(CONSTANTS.root + '/model/facenet_keras.h5')
+    # facenet = load_model(CONSTANTS.root + '/model/facenet_keras.h5')
 
-    convert_emb(data_dir + 'detected_X_y.npz', data_dir +'embeddings_X_y.npz', facenet)
+    # convert_emb(data_dir + 'detected_X_y.npz', data_dir +'embeddings_X_y.npz', facenet)
 
-    split_data(data_dir +'embeddings_X_y.npz', 10, data_dir + 'embeddings_Xtr_ytr_Xt_yt.npz')
+    split_data(data_dir +'embeddings_X_y.npz', 15, data_dir + 'embeddings_Xtr_ytr_Xt_yt_15.npz')
     
 
     train_SVM(
-        data_dir + 'embeddings_Xtr_ytr_Xt_yt.npz',
-        CONSTANTS.root + '/model/SVM_FR_VNCeleb.joblib')
+        data_dir + 'embeddings_Xtr_ytr_Xt_yt_15.npz',
+        CONSTANTS.root + '/model/SVM_FR_VNCeleb_train3_15.joblib')
         
 
-main()
+# main()
