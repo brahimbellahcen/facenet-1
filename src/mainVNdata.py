@@ -117,4 +117,4 @@ def main():
         CONSTANTS.root + '/model/SVM_FR_VNCeleb_train3_15.joblib')
         
 
-# main()
+main()
