@@ -28,23 +28,26 @@ def train_SVM(path_data, savedir):
     y_test = out_encoder.transform(y_test)
 
     #GridSearchCV
-    print("Fitting the classifier to the training set")
-    t0 = time()
-    param_grid = {'C': [10, 100, 1e3, 5e3, 1e4, 5e4, 1e5],
-                'gamma': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.1], }
-    model = GridSearchCV(
-        SVC(kernel='rbf', class_weight='balanced'), param_grid, n_jobs=-1
-    )
-    model = model.fit(X_train, y_train)
-    print("done in %0.3f minutes" % ((time() - t0)/60))
-    print("Best estimator found by grid search:")
-    print(model.best_estimator_)
+    # print("Fitting the classifier to the training set")
+    # t0 = time()
+    # param_grid = {'C': [10, 100, 1e3, 5e3, 1e4, 5e4, 1e5],
+    #             'gamma': [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.1], }
+    # model = GridSearchCV(
+    #     SVC(kernel='rbf', class_weight='balanced'), param_grid, n_jobs=-1
+    # )
+    # model = model.fit(X_train, y_train)
+    # print("done in %0.3f minutes" % ((time() - t0)/60))
+    # print("Best estimator found by grid search:")
+    # print(model.best_estimator_)
 
 
     # # fit model
-    # model = SVC(kernel='linear')
-    # model.fit(X_train, y_train)
-    # dump(model, savedir)
+    print('fitting model')
+    t0 = time()
+    model = SVC(kernel='linear')
+    model.fit(X_train, y_train)
+    print("done in %0.3f minutes" % ((time() - t0)/60))
+    dump(model, savedir)
 
     # evaluate
     print('evaluating......')
