@@ -82,15 +82,19 @@ def split_data(npz_file, train_size, save_dir):
 
     for i in range(X.shape[0]):
         length = len(X[i])
-        if length <= train_size:
+        if length <= 3:
             # X_train.extend(X[i])
             # y_train.extend(np.full((length,), y[i]))
             pass
+        elif length <= 6:
+            X_train.extend(X[i])
+            y_train.extend(np.full((length,), y[i]))
         else:
-            X_train.extend(X[i][:train_size])
-            X_test.extend(X[i][train_size:])
-            y_train.extend(np.full((train_size, ), y[i]))
-            y_test.extend(np.full((length - train_size,), y[i]))
+            ltrain = int(length * train_size)
+            X_train.extend(X[i][:ltrain])
+            X_test.extend(X[i][ltrain:])
+            y_train.extend(np.full((ltrain, ), y[i]))
+            y_test.extend(np.full((length - ltrain,), y[i]))
 
     X_train, y_train, X_test, y_test = np.asarray(X_train), np.asarray(y_train), np.asarray(X_test), np.asarray(y_test)
     print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
@@ -110,12 +114,12 @@ def main():
 
     # convert_emb(data_dir + 'detected_X_y.npz', data_dir +'embeddings_X_y.npz', facenet)
 
-    split_data(data_dir +'embeddings_X_y.npz', 20, data_dir + 'embeddings_Xtr_ytr_Xt_yt_20_pass.npz')
+    split_data(data_dir +'embeddings_X_y.npz', 0.8, data_dir + 'embeddings_Xtr_ytr_Xt_yt_0.8.npz')
     
 
     train_SVM(
-        data_dir + 'embeddings_Xtr_ytr_Xt_yt_20_pass.npz',
-        CONSTANTS.root + '/model/SVM_FR_VNCeleb_train5_20_pass.joblib')
+        data_dir + 'embeddings_Xtr_ytr_Xt_yt_0.8.npz',
+        CONSTANTS.root + '/model/SVM_FR_VNCeleb_train5_0.8.joblib')
         
 
 main()
