@@ -1,6 +1,6 @@
 from tensorflow.keras.models import load_model
 from scipy.spatial.distance import cosine
-from detect import extract_face, load_faces, load_dataset
+from detect import extract_face
 from extract_features import get_embedding
 import matplotlib.pyplot as plt
 
